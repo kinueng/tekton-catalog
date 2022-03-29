@@ -41,7 +41,8 @@ spec:
         if [ -z "$CUSTOM_SCRIPT" ]; then
           if [[ -n $(find /artifacts -name pom.xml) ]]; then
             echo "Additional build required. Running Maven build."
-            mvn -B package
+            echo "Skipping Maven build step..."
+            # mvn -B package
           else
             echo "No additional build script to be run."
           fi
