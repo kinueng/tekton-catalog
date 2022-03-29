@@ -66,27 +66,27 @@ spec:
             exit 1
         fi
 
-        echo "Linting Dockerfile"
+        # echo "Linting Dockerfile"
 
-        if [ "$HADOLINT_CONFIG" ]; then
-          HADOLINT_CONFIG="--config $HADOLINT_CONFIG"
-        fi
+        # if [ "$HADOLINT_CONFIG" ]; then
+        #   HADOLINT_CONFIG="--config $HADOLINT_CONFIG"
+        # fi
 
-        if [ "$HADOLINT_IGNORED_RULES" ]; then
-          HADOLINT_IGNORED_RULES=$(echo $HADOLINT_IGNORED_RULES | sed "s/,/ --ignore /g")
-          HADOLINT_IGNORED_RULES="--ignore $HADOLINT_IGNORED_RULES"
-        fi
+        # if [ "$HADOLINT_IGNORED_RULES" ]; then
+        #   HADOLINT_IGNORED_RULES=$(echo $HADOLINT_IGNORED_RULES | sed "s/,/ --ignore /g")
+        #   HADOLINT_IGNORED_RULES="--ignore $HADOLINT_IGNORED_RULES"
+        # fi
 
-        if [ "$TRUSTED_REGISTRIES" ]; then
-          TRUSTED_REGISTRIES=$(echo $TRUSTED_REGISTRIES | sed "s/,/ --trusted-registry /g")
-          TRUSTED_REGISTRIES="--trusted-registry $TRUSTED_REGISTRIES"
-        fi
+        # if [ "$TRUSTED_REGISTRIES" ]; then
+        #   TRUSTED_REGISTRIES=$(echo $TRUSTED_REGISTRIES | sed "s/,/ --trusted-registry /g")
+        #   TRUSTED_REGISTRIES="--trusted-registry $TRUSTED_REGISTRIES"
+        # fi
 
-        if hadolint ${HADOLINT_CONFIG} ${HADOLINT_IGNORED_RULES} ${TRUSTED_REGISTRIES} ${DOCKER_FILE_PATH}/${DOCKER_FILE}; then
-          echo "No lint errors found"
-        else
-          # Failures in the lint
-          if [ "$(params.fail-on-lint-errors)" == "true" ]; then
-            exit 1;
-          fi
-        fi
+        # if hadolint ${HADOLINT_CONFIG} ${HADOLINT_IGNORED_RULES} ${TRUSTED_REGISTRIES} ${DOCKER_FILE_PATH}/${DOCKER_FILE}; then
+        #   echo "No lint errors found"
+        # else
+        #   # Failures in the lint
+        #   if [ "$(params.fail-on-lint-errors)" == "true" ]; then
+        #     exit 1;
+        #   fi
+        # fi
